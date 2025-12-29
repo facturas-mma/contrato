@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formato de Contrato - Tamaño Carta</title>
+    <title>Contrato Individual de Trabajo | Formato Carta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset y estilos base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Times New Roman', Times, serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            color: #000;
+            background-color: #f0f0f0;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -22,180 +25,238 @@
             min-height: 100vh;
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-        
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
-        
-        .description {
-            color: #7f8c8d;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-        
-        /* Contenedor principal de la página tipo carta */
-        .page-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        /* Tamaño carta estándar (8.5 x 11 pulgadas) */
-        .carta-page {
+        /* Contenedor principal tamaño carta */
+        .carta-container {
             width: 8.5in;
-            height: 11in;
+            min-height: 11in;
             background-color: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            padding: 1in; /* Margen de 1 pulgada en todos los lados */
-            overflow: auto;
-            margin-bottom: 20px;
+            padding: 1in;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            position: relative;
         }
         
-        /* Estilos específicos para el contenido del contrato */
-        .contract-header {
+        /* Encabezado profesional */
+        .header-profesional {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 20px;
+            border-bottom: 2px solid #1a3c5e;
+            padding-bottom: 15px;
         }
         
-        .contract-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        
-        .contract-subtitle {
+        .header-profesional h1 {
             font-size: 18px;
-            font-style: italic;
-            margin-bottom: 5px;
-        }
-        
-        .contract-date {
-            margin-top: 15px;
-            font-size: 16px;
-        }
-        
-        .contract-body {
-            line-height: 1.6;
-            font-size: 16px;
-        }
-        
-        .contract-clause {
-            margin-bottom: 20px;
-        }
-        
-        .clause-title {
             font-weight: bold;
+            text-transform: uppercase;
+            color: #1a3c5e;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .header-profesional h2 {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: normal;
             margin-bottom: 5px;
-            font-size: 17px;
         }
         
-        .signature-section {
+        .header-profesional .empresa {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* Secciones del contrato */
+        .seccion-contrato {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        
+        .titulo-seccion {
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #1a3c5e;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .subtitulo-seccion {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 15px 0 8px 0;
+            color: #2c3e50;
+        }
+        
+        .texto-contrato {
+            font-size: 13px;
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+        
+        /* Elementos numerados y viñetas */
+        .lista-numerada {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .lista-numerada li {
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        
+        /* Campos de entrada para variables */
+        .variable {
+            display: inline-block;
+            min-width: 150px;
+            border-bottom: 1px dotted #333;
+            text-align: center;
+            margin: 0 5px;
+            font-weight: bold;
+            color: #1a3c5e;
+        }
+        
+        .campo-entrada {
+            width: 200px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 2px 5px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 13px;
+            text-align: center;
+            background-color: transparent;
+        }
+        
+        .campo-entrada:focus {
+            outline: none;
+            border-bottom: 1px solid #1a3c5e;
+        }
+        
+        /* Firmas */
+        .seccion-firmas {
             margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #ccc;
+            page-break-inside: avoid;
         }
         
-        .signature-line {
-            margin-top: 40px;
+        .firmas-container {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            margin-top: 40px;
         }
         
-        .signature-box {
-            width: 48%;
-            margin-bottom: 20px;
+        .firma {
+            width: 45%;
+            text-align: center;
         }
         
-        .signature-space {
-            height: 50px;
-            border-bottom: 1px solid #333;
+        .linea-firma {
+            border-bottom: 1px solid #000;
+            height: 30px;
             margin-bottom: 10px;
         }
         
-        /* Panel de controles */
-        .controls-panel {
-            width: 300px;
+        .nombre-firma {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .cargo-firma {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .testigo {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* Panel de control */
+        .panel-control {
+            width: 8.5in;
             background-color: white;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            height: fit-content;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
+            border-radius: 5px;
         }
         
-        .control-group {
+        .panel-titulo {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a3c5e;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .variables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
             margin-bottom: 20px;
         }
         
-        .control-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #2c3e50;
-            font-size: 16px;
+        .variable-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .variable-item label {
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .variable-item input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+        
+        .botones-accion {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         
         .btn {
-            background-color: #3498db;
-            color: white;
+            padding: 10px 20px;
             border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
+            border-radius: 3px;
             cursor: pointer;
             font-size: 14px;
-            width: 100%;
-            margin-top: 10px;
             transition: background-color 0.3s;
         }
         
-        .btn:hover {
-            background-color: #2980b9;
+        .btn-primary {
+            background-color: #1a3c5e;
+            color: white;
         }
         
-        .btn-print {
-            background-color: #2ecc71;
+        .btn-primary:hover {
+            background-color: #15304d;
         }
         
-        .btn-print:hover {
+        .btn-success {
             background-color: #27ae60;
+            color: white;
         }
         
-        .margins-control {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+        .btn-success:hover {
+            background-color: #219653;
         }
         
-        .margin-input {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 100%;
+        .btn-secondary {
+            background-color: #7f8c8d;
+            color: white;
         }
         
-        .margin-label {
-            font-size: 14px;
-            margin-bottom: 5px;
-            display: block;
+        .btn-secondary:hover {
+            background-color: #6c7b7d;
         }
         
         /* Para impresión */
@@ -205,241 +266,510 @@
                 padding: 0;
             }
             
-            .controls-panel {
-                display: none;
-            }
-            
-            .carta-page {
+            .carta-container {
                 box-shadow: none;
                 width: 100%;
                 height: auto;
-                margin: 0;
+                min-height: auto;
                 padding: 1in;
+                margin: 0;
             }
             
-            header, .description {
+            .panel-control {
                 display: none;
             }
-        }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .page-container {
-                flex-direction: column;
-                align-items: center;
+            
+            .campo-entrada {
+                border-bottom: 1px solid #000;
             }
             
-            .controls-panel {
-                width: 100%;
-                max-width: 500px;
-            }
-            
-            .carta-page {
-                width: 100%;
-                max-width: 8.5in;
-                height: auto;
-                min-height: 11in;
+            .variable {
+                border-bottom: 1px solid #000;
             }
         }
         
-        @media (max-width: 768px) {
-            .carta-page {
+        /* Responsive para pantallas más pequeñas */
+        @media (max-width: 900px) {
+            body {
+                padding: 10px;
+            }
+            
+            .carta-container, .panel-control {
+                width: 100%;
+            }
+            
+            .carta-container {
                 padding: 0.5in;
             }
             
-            .signature-box {
-                width: 100%;
+            .firmas-container {
+                flex-direction: column;
             }
+            
+            .firma {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* Numeración de páginas y detalles */
+        .numero-pagina {
+            position: absolute;
+            bottom: 0.5in;
+            right: 1in;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .logo-empresa {
+            position: absolute;
+            top: 1in;
+            left: 1in;
+            font-size: 12px;
+            color: #1a3c5e;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Formato de Contrato - Tamaño Carta</h1>
-            <p class="description">Este formulario tiene dimensiones de carta estándar (8.5" x 11") con márgenes de 1 pulgada. Puedes ajustar los márgenes y luego imprimir.</p>
-        </header>
+    <div class="carta-container" id="contratoCarta">
+        <div class="logo-empresa">MAHATMA VÁZQUEZ ARCEO</div>
         
-        <div class="page-container">
-            <div class="carta-page" id="contractPage">
-                <div class="contract-header">
-                    <div class="contract-title">CONTRATO DE PRESTACIÓN DE SERVICIOS</div>
-                    <div class="contract-subtitle">Entre las partes que se mencionan a continuación</div>
-                    <div class="contract-date">Fecha: <span id="currentDate"></span></div>
+        <div class="header-profesional">
+            <h1>CONTRATO INDIVIDUAL DE TRABAJO</h1>
+            <h2>POR TIEMPO INDEFINIDO CON PERIODO DE PRUEBA</h2>
+            <h2>PUESTO: AUXILIAR OPERATIVO MULTIFUNCIONAL</h2>
+            <p class="empresa">Documento legal - Formato Carta 8.5" x 11"</p>
+        </div>
+        
+        <div class="texto-contrato">
+            <p><strong>QUE CELEBRAN:</strong> Por una parte, <strong>MAHATMA VÁZQUEZ ARCEO</strong>, a quien en lo sucesivo se le denominará "EL PATRÓN"; y por la otra parte, el/la C. <span class="variable" id="nombreTrabajador">[NOMBRE COMPLETO]</span>, a quien en lo sucesivo se le denominará "EL TRABAJADOR", al tenor de las siguientes declaraciones y cláusulas:</p>
+        </div>
+        
+        <div class="seccion-contrato">
+            <div class="titulo-seccion">DECLARACIONES</div>
+            
+            <div class="subtitulo-seccion">I. DECLARA "EL PATRÓN":</div>
+            <div class="lista-numerada">
+                <li><strong>A)</strong> Ser una persona física de nombre Mahatma Vazquez Arceo, legalmente constituida conforme a las leyes mexicanas, con registro ante el Registro Federal de Contribuyentes con la clave: <strong>VAAM910702IK1</strong>.</li>
+                <li><strong>B)</strong> Tener su domicilio fiscal y social en: Calle Sicomoro #301, Col. Las Arboledas, Guadalupe, Zacatecas CP 98608, y para efectos del presente contrato, establecimiento en: Av. de las torres, #204 Col. Lomas del Convento, Guadalupe, Zacatecas, CP 98608.</li>
+                <li><strong>C)</strong> Contar con Registro Patronal ante el Instituto Mexicano del Seguro Social: <strong>H02-29457-10-7</strong>.</li>
+                <li><strong>D)</strong> Requerir los servicios del TRABAJADOR para el puesto de AUXILIAR OPERATIVO MULTIFUNCIONAL.</li>
+            </div>
+            
+            <div class="subtitulo-seccion">II. DECLARA "EL TRABAJADOR":</div>
+            <div class="lista-numerada">
+                <li><strong>A)</strong> Ser mayor de edad, de nacionalidad mexicana, con fecha de nacimiento <span class="variable" id="fechaNacimiento">[FECHA NACIMIENTO]</span>, identificado con Clave Única de Registro de Población: <span class="variable" id="curpTrabajador">[CURP]</span>.</li>
+                <li><strong>B)</strong> Tener domicilio particular en: <span class="variable" id="direccionTrabajador">[DIRECCIÓN]</span>, y correo electrónico: <span class="variable" id="correoTrabajador">[CORREO]</span> para recibir notificaciones.</li>
+                <li><strong>C)</strong> Contar con Registro Federal de Contribuyentes: <span class="variable" id="rfcTrabajador">[RFC]</span>.</li>
+                <li><strong>D)</strong> Acreditar la capacidad física, mental, conocimientos y experiencia necesarios para desempeñar el puesto, comprometiéndose a presentar documentación comprobatoria.</li>
+                <li><strong>E)</strong> Manifestar que no tiene impedimento legal para trabajar, no está sujeto a contrato vigente con otra empresa, y acepta los términos aquí establecidos.</li>
+            </div>
+        </div>
+        
+        <div class="seccion-contrato">
+            <div class="titulo-seccion">CLÁUSULAS</div>
+            
+            <div class="subtitulo-seccion">PRIMERA. OBJETO Y NATURALEZA DEL TRABAJO.</div>
+            <div class="texto-contrato">
+                <p><strong>1.1</strong> El TRABAJADOR se contrata como AUXILIAR OPERATIVO MULTIFUNCIONAL, cuyo perfil incluye polivalencia funcional, obligándose a desempeñar las tareas propias del puesto y cualquier otra actividad análoga o complementaria que requiera el PATRÓN, dentro de su capacidad física e intelectual, en cualquiera de las áreas operativas de la tienda.</p>
+                <p><strong>1.2</strong> Las funciones detalladas se describen en el ANEXO "A" (Descripción de Puesto y Funciones), que forma parte integral del contrato. El TRABAJADOR declara haber recibido, leído y entendido dicho anexo.</p>
+                <p><strong>1.3</strong> El TRABAJADOR se obliga a seguir en todo momento los manuales de procedimientos, políticas internas, códigos de ética y, en especial, el Reglamento Interior de Trabajo debidamente registrado, los cuales ha recibido y acepta.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">SEGUNDA. DURACIÓN Y PERIODO DE PRUEBA.</div>
+            <div class="texto-contrato">
+                <p><strong>2.1</strong> El contrato es por tiempo indefinido, sujeto a un PERIODO DE PRUEBA de 30 días hábiles conforme al Artículo 39-A de la LFT.</p>
+                <p><strong>2.2</strong> Durante este periodo, el PATRÓN evaluará objetivamente si el TRABAJADOR reúne los conocimientos, habilidades, aptitudes y actitudes necesarios para el puesto, mediante indicadores de desempeño establecidos (ejemplo: precisión en caja &lt;1% de error, cumplimiento de procedimientos de recepción al 100%).</p>
+                <p><strong>2.3</strong> Si el PATRÓN determina que el TRABAJADOR no satisface los requisitos del puesto, podrá dar por terminada la relación laboral sin responsabilidad para el PATRÓN, previa notificación por escrito y entrega del finiquito correspondiente. Esta determinación deberá sustentarse en hechos objetivos y documentables.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">TERCERA. MOVILIDAD GEOGRÁFICA Y FUNCIONAL.</div>
+            <div class="texto-contrato">
+                <p><strong>3.1</strong> El TRABAJADOR acepta que, por necesidades del servicio, podrá ser adscrito a cualquier sucursal, establecimiento o centro de trabajo del PATRÓN dentro del municipio o zona metropolitana de la firma del contrato, o a cualquier otra ubicación que implique un cambio de residencia, siempre que se cumpla con lo establecido en el Artículo 40 de la LFT.</p>
+                <p><strong>3.2</strong> Asimismo, acepta la movilidad funcional para desempeñar distintas labores dentro de la misma categoría o nivel, según las necesidades operativas.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">CUARTA. JORNADA DE TRABAJO Y HORARIOS.</div>
+            <div class="texto-contrato">
+                <p><strong>4.1</strong> Se establece una jornada diurna de 8 horas efectivas de trabajo. El horario específico será discontinuo, con una interrupción para alimentos de 1 a 2 horas, la cual no será remunerada y será de libre disposición del TRABAJADOR. El horario inicial será de 15:00 a 23:00, sujeto a modificación mediante programas de trabajo notificados con al menos 24 horas de anticipación.</p>
+                <p><strong>4.2</strong> Durante el tiempo de alimentos, el TRABAJADOR podrá disponer libremente del mismo, sin obligación de permanecer en el centro de trabajo. El PATRÓN no ejercerá control alguno sobre el TRABAJADOR durante este periodo.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">QUINTA. REMUNERACIÓN.</div>
+            <div class="texto-contrato">
+                <p><strong>5.1</strong> El TRABAJADOR percibirá un salario diario integrado de $<span class="variable" id="salarioTrabajador">[SALARIO]</span>, que incluye el pago de todas las prestaciones de ley (vacaciones, prima vacacional, aguinaldo, etc.). Este salario se pagará en días y lugar designados por el PATRÓN.</p>
+                <p><strong>5.2</strong> El pago de horas extras, tiempo extra triple y prima dominical se hará estrictamente conforme a los topes y porcentajes que marca la LFT, y únicamente cuando exista autorización por escrito o verbal previa del supervisor designado. Las horas trabajadas sin autorización no serán remuneradas y podrán considerarse una falta disciplinaria.</p>
+            </div>
+        </div>
+        
+        <div class="seccion-contrato">
+            <div class="subtitulo-seccion">SEXTA. PROTOCOLOS DE SEGURIDAD, CAJA Y RESPONSABILIDAD POR PÉRDIDAS.</div>
+            <div class="texto-contrato">
+                <p><strong>6.1</strong> El TRABAJADOR es directamente responsable de seguir estrictamente los protocolos de manejo de efectivo, retiro programado a caja fuerte, control de inventario y seguridad física establecidos en el manual correspondiente.</p>
+                <p><strong>6.2</strong> EL INCUMPLIMIENTO INJUSTIFICADO DE ESTOS PROTOCOLOS SERÁ CONSIDERADO UNA FALTA GRAVE que podrá dar lugar a sanciones disciplinarias, incluyendo la suspensión sin goce de sueldo y, en casos graves o reiterados, la rescisión de la relación laboral sin responsabilidad para el PATRÓN, conforme al Artículo 47 de la LFT.</p>
+                <p><strong>6.3</strong> En caso de siniestro (robo, asalto, hurto), el TRABAJADOR está obligado a:</p>
+                <div class="lista-numerada">
+                    <li><strong>a)</strong> Activar inmediatamente el protocolo de seguridad.</li>
+                    <li><strong>b)</strong> Presentarse ante el Ministerio Público en un plazo no mayor a 24 horas para levantar el acta correspondiente, entregando copia al PATRÓN.</li>
+                    <li><strong>c)</strong> Cooperar con todas las investigaciones internas y externas.</li>
+                </div>
+                <p><strong>6.4</strong> RESPONSABILIDAD ECONÓMICA: De conformidad con el Artículo 110 de la LFT, el TRABAJADOR sólo podrá ser responsable económicamente por daños y perjuicios que ocasione al PATRÓN por DOLO (intención maliciosa comprobada judicialmente) o por NEGLIGENCIA GRAVE O DESCUIDO INEXCUSABLE. Cualquier descuento por este concepto requerirá resolución previa de la Junta de Conciliación y Arbitraje y en ningún caso podrá exceder el equivalente a un mes de salario del TRABAJADOR.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">SÉPTIMA. CONFIDENCIALIDAD Y NO COMPETENCIA.</div>
+            <div class="texto-contrato">
+                <p><strong>7.1</strong> El TRABAJADOR se obliga a mantener estricta confidencialidad sobre toda información del PATRÓN (listas de proveedores, márgenes, estrategias comerciales, sistemas, manuales), durante y después de la relación laboral.</p>
+                <p><strong>7.2</strong> Por el solo hecho de su contratación, el TRABAJADOR acepta una cláusula de no competencia por un plazo de 12 meses posteriores a la terminación del contrato, dentro de un radio de 5 kilómetros alrededor de cualquier sucursal del PATRÓN en la misma ciudad, y para empresas del mismo giro (comercio al menudeo de abarrotes).</p>
+            </div>
+            
+            <div class="subtitulo-seccion">OCTAVA. PROPIEDAD INTELECTUAL.</div>
+            <div class="texto-contrato">
+                <p>Todo invento, mejora de proceso, desarrollo de software, método de trabajo o creación intelectual que el TRABAJADOR realice con motivo de su trabajo, será propiedad exclusiva del PATRÓN, quien tendrá todos los derechos de explotación.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">NOVENA. CAUSAS DE RESCISIÓN DE LA RELACIÓN LABORAL SIN RESPONSABILIDAD PARA EL PATRÓN.</div>
+            <div class="texto-contrato">
+                <p>Además de las señaladas en el Artículo 47 de la LFT, serán causas de despido justificado:</p>
+                <div class="lista-numerada">
+                    <li><strong>9.1</strong> Cometer dos errores graves en el manejo de efectivo o inventarios (diferencias superiores al 1% del valor manejado) en un período de 30 días, debidamente documentados.</li>
+                    <li><strong>9.2</strong> Incumplir reiteradamente (tres veces en 30 días) los protocolos de seguridad, retiro de efectivo o control de mercancía.</li>
+                    <li><strong>9.3</strong> Negarse injustificadamente a laborar en días festivos o horarios extraordinarios cuando sean programados con al menos 72 horas de anticipación y se paguen conforme a ley, salvo causa de fuerza mayor.</li>
+                    <li><strong>9.4</strong> Cualquier violación a las políticas de conflicto de intereses (trabajar simultáneamente para la competencia, realizar negocios con proveedores sin autorización).</li>
+                    <li><strong>9.5</strong> Sustraer, malversar o desviar cualquier recurso del PATRÓN, independientemente de su valor.</li>
+                    <li><strong>9.6</strong> Manipular, alterar o dañar los sistemas de punto de venta, cómputo, CCTV o cualquier equipo de control.</li>
+                </div>
+            </div>
+        </div>
+        
+        <div class="seccion-contrato">
+            <div class="subtitulo-seccion">DÉCIMA. SANCIONES DISCIPLINARIAS.</div>
+            <div class="texto-contrato">
+                <p><strong>10.1</strong> El PATRÓN podrá aplicar sanciones progresivas conforme al Reglamento Interior de Trabajo, que van desde amonestación verbal, amonestación por escrito, suspensión sin goce de sueldo hasta por 8 días (previo procedimiento de audiencia al trabajador, Art. 42 LFT), hasta la rescisión por causas graves.</p>
+                <p><strong>10.2</strong> La suspensión se aplicará únicamente como medida disciplinaria prevista en el Reglamento y como paso previo a una posible rescisión, garantizando siempre el derecho de audiencia del TRABAJADOR.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">DÉCIMA PRIMERA. REVISIÓN MÉDICA Y DROGAS.</div>
+            <div class="texto-contrato">
+                <p>El TRABAJADOR se somete a los exámenes médicos de ingreso, periódicos y de egreso. El consumo de drogas o alcohol durante la jornada, o presentarse bajo sus efectos, será causa de suspensión inmediata y motivo de rescisión, previa prueba confirmatoria.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">DÉCIMA SEGUNDA. BENEFICIARIOS.</div>
+            <div class="texto-contrato">
+                <p>El TRABAJADOR designa como beneficiario(a) para el pago de las prestaciones e indemnizaciones que pudieran generarse en caso de fallecimiento o desaparición a:</p>
+                <p>NOMBRE: <span class="variable" id="beneficiario">[BENEFICIARIO]</span></p>
+                <p>PARENTESCO: <span class="variable" id="parentescoBenef">[PARENTESCO]</span></p>
+                <p>DOMICILIO: <span class="variable" id="domicilioBenef">[DOMICILIO]</span></p>
+                <p>TELÉFONO: <span class="variable" id="telefonoBenef">[TELÉFONO]</span></p>
+            </div>
+            
+            <div class="subtitulo-seccion">DÉCIMA TERCERA. NOTIFICACIONES Y DOMICILIOS.</div>
+            <div class="texto-contrato">
+                <p>Para todos los efectos legales, las partes señalan los domicilios declarados al inicio. Toda notificación enviada al correo electrónico del TRABAJADOR se tendrá por válidamente realizada.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">DÉCIMA CUARTA. JURISDICCIÓN Y FUERO.</div>
+            <div class="texto-contrato">
+                <p>Para la interpretación, cumplimiento y solución de controversias derivadas del presente contrato, las partes se someten expresamente a la jurisdicción de los Tribunales Laborales competentes en la ciudad de GUADALUPE, Estado de ZACATECAS, renunciando a cualquier otro fuero que por razón de sus domicilios presentes o futuros pudiera corresponderles.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">DÉCIMA QUINTA. DOCUMENTACIÓN RECIBIDA Y ENTERADO.</div>
+            <div class="texto-contrato">
+                <p>El TRABAJADOR declara que en esta misma fecha ha recibido, leído y entendido:</p>
+                <div class="lista-numerada">
+                    <li>Copia del Reglamento Interior de Trabajo registrado ante la Junta de Conciliación y Arbitraje.</li>
+                    <li>Copia del Manual de Procedimientos y Seguridad de la Empresa.</li>
+                    <li>Copia del presente Contrato Individual de Trabajo.</li>
+                </div>
+                <p>Se le ha informado que recibirá capacitación inicial sobre sus funciones y protocolos.</p>
+                <p>El TRABAJADOR reconoce que el incumplimiento de lo aquí pactado y de los documentos recibidos dará lugar a las sanciones aplicables.</p>
+            </div>
+            
+            <div class="subtitulo-seccion">DÉCIMA SEXTA. INTEGRIDAD DEL CONTRATO.</div>
+            <div class="texto-contrato">
+                <p>Este contrato constituye el acuerdo completo entre las partes y sustituye cualquier otro acuerdo o entendimiento previo, ya sea verbal o escrito. Si alguna cláusula de este contrato fuera declarada nula o inaplicable, las restantes mantendrán plena vigencia y efecto.</p>
+            </div>
+        </div>
+        
+        <div class="seccion-firmas">
+            <div class="titulo-seccion">LEÍDO, ENTENDIDO Y ACEPTADO</div>
+            <div class="texto-contrato">
+                <p>Se firma por DUPLICADO en la ciudad de GUADALUPE, ZACATECAS, a los <span class="variable" id="diaFirma">[DÍA]</span> días del mes de <span class="variable" id="mesFirma">[MES]</span> del año <span class="variable" id="anoFirma">[AÑO]</span>.</p>
+            </div>
+            
+            <div class="firmas-container">
+                <div class="firma">
+                    <div class="linea-firma"></div>
+                    <div class="nombre-firma">MAHATMA VÁZQUEZ ARCEO</div>
+                    <div class="cargo-firma">EL PATRÓN</div>
+                    <div class="cargo-firma">Nombre y Firma</div>
                 </div>
                 
-                <div class="contract-body">
-                    <div class="contract-clause">
-                        <div class="clause-title">PRIMERA: LAS PARTES</div>
-                        <p>En la ciudad de <input type="text" placeholder="[Ciudad]" style="width: 200px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, a los <input type="text" placeholder="[Día]" style="width: 50px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> días del mes de <input type="text" placeholder="[Mes]" style="width: 100px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> del año <input type="text" placeholder="[Año]" style="width: 70px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, se reúnen por una parte el Sr./Sra. <input type="text" placeholder="[Nombre del Contratante]" style="width: 250px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, con domicilio en <input type="text" placeholder="[Domicilio]" style="width: 300px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, en adelante "EL CONTRATANTE"; y por la otra parte <input type="text" placeholder="[Nombre del Prestador]" style="width: 250px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, con domicilio en <input type="text" placeholder="[Domicilio]" style="width: 300px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, en adelante "EL PRESTADOR". Ambas partes se reconocen capacidad legal para obligarse y convienen en celebrar el presente contrato de prestación de servicios, sujetándose a las siguientes:</p>
-                    </div>
-                    
-                    <div class="contract-clause">
-                        <div class="clause-title">SEGUNDA: OBJETO DEL CONTRATO</div>
-                        <p>EL PRESTADOR se obliga a prestar a EL CONTRATANTE los servicios de <input type="text" placeholder="[Descripción de servicios]" style="width: 400px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, de conformidad con los términos y condiciones establecidos en el presente instrumento.</p>
-                    </div>
-                    
-                    <div class="contract-clause">
-                        <div class="clause-title">TERCERA: DURACIÓN</div>
-                        <p>El presente contrato tendrá una vigencia de <input type="text" placeholder="[Número]" style="width: 60px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> meses, contados a partir de la fecha de firma, prorrogable automáticamente por periodos iguales salvo renuncia de alguna de las partes, comunicada por escrito con al menos 30 días de antelación a la fecha de terminación.</p>
-                    </div>
-                    
-                    <div class="contract-clause">
-                        <div class="clause-title">CUARTA: REMUNERACIÓN</div>
-                        <p>Como contraprestación por los servicios objeto del presente contrato, EL CONTRATANTE pagará a EL PRESTADOR la cantidad de $<input type="text" placeholder="[Monto]" style="width: 150px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> (<input type="text" placeholder="[Monto en letra]" style="width: 400px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">) mensuales, pagaderos los días <input type="text" placeholder="[Día de pago]" style="width: 60px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> de cada mes.</p>
-                    </div>
-                    
-                    <div class="contract-clause">
-                        <div class="clause-title">QUINTA: OBLIGACIONES DE LAS PARTES</div>
-                        <p>EL PRESTADOR se obliga a: (a) Ejecutar los servicios con la diligencia y cuidado debidos; (b) Cumplir con los plazos acordados; (c) Mantener la confidencialidad de la información a la que tenga acceso. EL CONTRATANTE se obliga a: (a) Proporcionar la información necesaria para la ejecución del servicio; (b) Efectuar los pagos en los plazos convenidos; (c) Brindar las facilidades necesarias para el adecuado cumplimiento del contrato.</p>
-                    </div>
-                    
-                    <div class="signature-section">
-                        <p>En señal de conformidad, las partes firman el presente contrato en dos ejemplares del mismo tenor y a un solo efecto, en la fecha y lugar antes indicados.</p>
-                        
-                        <div class="signature-line">
-                            <div class="signature-box">
-                                <div class="signature-space"></div>
-                                <div><strong>EL CONTRATANTE</strong></div>
-                                <div>Nombre: <input type="text" placeholder="[Nombre completo]" style="width: 200px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
-                                <div>RFC: <input type="text" placeholder="[RFC]" style="width: 150px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
-                            </div>
-                            
-                            <div class="signature-box">
-                                <div class="signature-space"></div>
-                                <div><strong>EL PRESTADOR</strong></div>
-                                <div>Nombre: <input type="text" placeholder="[Nombre completo]" style="width: 200px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
-                                <div>RFC: <input type="text" placeholder="[RFC]" style="width: 150px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="firma">
+                    <div class="linea-firma"></div>
+                    <div class="nombre-firma" id="firmaNombreTrabajador">[NOMBRE COMPLETO DEL TRABAJADOR]</div>
+                    <div class="cargo-firma">EL TRABAJADOR</div>
+                    <div class="cargo-firma">HUELLA DIGITAL DEL PULGAR DERECHO: __________</div>
                 </div>
             </div>
             
-            <div class="controls-panel">
-                <div class="control-group">
-                    <div class="control-title">Ajustar Márgenes (pulgadas)</div>
-                    <div class="margins-control">
-                        <div>
-                            <label class="margin-label">Margen Superior</label>
-                            <input type="number" id="marginTop" class="margin-input" value="1" step="0.1" min="0.5" max="2">
-                        </div>
-                        <div>
-                            <label class="margin-label">Margen Derecho</label>
-                            <input type="number" id="marginRight" class="margin-input" value="1" step="0.1" min="0.5" max="2">
-                        </div>
-                        <div>
-                            <label class="margin-label">Margen Inferior</label>
-                            <input type="number" id="marginBottom" class="margin-input" value="1" step="0.1" min="0.5" max="2">
-                        </div>
-                        <div>
-                            <label class="margin-label">Margen Izquierdo</label>
-                            <input type="number" id="marginLeft" class="margin-input" value="1" step="0.1" min="0.5" max="2">
-                        </div>
+            <div class="testigo">
+                <div class="texto-contrato">
+                    <p><strong>TESTIGO DE RECEPCIÓN DE DOCUMENTOS</strong></p>
+                    <p>Yo, Yaneth Alejandra Trejo Morales, con identificación oficial INE, testigo que el(la) C. <span class="variable" id="testigoNombre">[NOMBRE]</span> recibió en esta fecha copia física completa del Contrato, Reglamento Interior de Trabajo y Manual de Procedimientos.</p>
+                </div>
+                
+                <div class="firmas-container">
+                    <div class="firma">
+                        <div class="linea-firma"></div>
+                        <div class="nombre-firma">YANETH ALEJANDRA TREJO MORALES</div>
+                        <div class="cargo-firma">NOMBRE DEL TESTIGO</div>
                     </div>
-                    <button id="applyMargins" class="btn">Aplicar Márgenes</button>
-                </div>
-                
-                <div class="control-group">
-                    <div class="control-title">Opciones de Contrato</div>
-                    <button id="fillSample" class="btn">Rellenar con Datos de Ejemplo</button>
-                    <button id="clearForm" class="btn">Limpiar Formulario</button>
-                </div>
-                
-                <div class="control-group">
-                    <div class="control-title">Impresión</div>
-                    <button id="printContract" class="btn btn-print">Imprimir Contrato</button>
-                    <p style="font-size: 13px; margin-top: 10px; color: #7f8c8d;">Para mejor resultado, en opciones de impresión seleccione "Tamaño carta" y márgenes "Mínimos" o "Ninguno".</p>
+                    
+                    <div class="firma">
+                        <div class="linea-firma"></div>
+                        <div class="cargo-firma">FIRMA DEL TESTIGO</div>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+        <div class="numero-pagina">Página 1 de 1</div>
+    </div>
+    
+    <div class="panel-control">
+        <div class="panel-titulo">DATOS DEL CONTRATO</div>
+        
+        <div class="variables-grid">
+            <div class="variable-item">
+                <label for="inputNombre">Nombre del Trabajador:</label>
+                <input type="text" id="inputNombre" placeholder="Nombre completo del trabajador">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputFechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="text" id="inputFechaNacimiento" placeholder="DD/MM/AAAA">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputCURP">CURP:</label>
+                <input type="text" id="inputCURP" placeholder="Clave Única de Registro de Población">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputDireccion">Dirección:</label>
+                <input type="text" id="inputDireccion" placeholder="Domicilio particular">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputCorreo">Correo Electrónico:</label>
+                <input type="email" id="inputCorreo" placeholder="correo@ejemplo.com">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputRFC">RFC:</label>
+                <input type="text" id="inputRFC" placeholder="Registro Federal de Contribuyentes">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputSalario">Salario Diario Integrado:</label>
+                <input type="text" id="inputSalario" placeholder="Ej. 350.00">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputBeneficiario">Beneficiario:</label>
+                <input type="text" id="inputBeneficiario" placeholder="Nombre del beneficiario">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputParentesco">Parentesco del Beneficiario:</label>
+                <input type="text" id="inputParentesco" placeholder="Ej. Cónyuge, Hijo(a), etc.">
+            </div>
+            
+            <div class="variable-item">
+                <label for="inputFechaFirma">Fecha de Firma:</label>
+                <input type="text" id="inputFechaFirma" placeholder="DD de MES de AAAA">
+            </div>
+        </div>
+        
+        <div class="botones-accion">
+            <button class="btn btn-primary" id="btnRellenar">Rellenar Contrato</button>
+            <button class="btn btn-success" id="btnImprimir">Imprimir Contrato</button>
+            <button class="btn btn-secondary" id="btnLimpiar">Limpiar Formulario</button>
         </div>
     </div>
 
     <script>
-        // Establecer fecha actual
-        const currentDate = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('es-ES', options);
-        
-        // Aplicar márgenes personalizados
-        document.getElementById('applyMargins').addEventListener('click', function() {
-            const marginTop = document.getElementById('marginTop').value;
-            const marginRight = document.getElementById('marginRight').value;
-            const marginBottom = document.getElementById('marginBottom').value;
-            const marginLeft = document.getElementById('marginLeft').value;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del contrato
+            const elementosContrato = {
+                nombreTrabajador: document.getElementById('nombreTrabajador'),
+                fechaNacimiento: document.getElementById('fechaNacimiento'),
+                curpTrabajador: document.getElementById('curpTrabajador'),
+                direccionTrabajador: document.getElementById('direccionTrabajador'),
+                correoTrabajador: document.getElementById('correoTrabajador'),
+                rfcTrabajador: document.getElementById('rfcTrabajador'),
+                salarioTrabajador: document.getElementById('salarioTrabajador'),
+                beneficiario: document.getElementById('beneficiario'),
+                parentescoBenef: document.getElementById('parentescoBenef'),
+                domicilioBenef: document.getElementById('domicilioBenef'),
+                telefonoBenef: document.getElementById('telefonoBenef'),
+                diaFirma: document.getElementById('diaFirma'),
+                mesFirma: document.getElementById('mesFirma'),
+                anoFirma: document.getElementById('anoFirma'),
+                testigoNombre: document.getElementById('testigoNombre'),
+                firmaNombreTrabajador: document.getElementById('firmaNombreTrabajador')
+            };
             
-            const contractPage = document.getElementById('contractPage');
-            contractPage.style.padding = `${marginTop}in ${marginRight}in ${marginBottom}in ${marginLeft}in`;
+            // Inputs del formulario
+            const inputsFormulario = {
+                nombre: document.getElementById('inputNombre'),
+                fechaNacimiento: document.getElementById('inputFechaNacimiento'),
+                curp: document.getElementById('inputCURP'),
+                direccion: document.getElementById('inputDireccion'),
+                correo: document.getElementById('inputCorreo'),
+                rfc: document.getElementById('inputRFC'),
+                salario: document.getElementById('inputSalario'),
+                beneficiario: document.getElementById('inputBeneficiario'),
+                parentesco: document.getElementById('inputParentesco'),
+                fechaFirma: document.getElementById('inputFechaFirma')
+            };
             
-            // Mostrar confirmación
-            alert(`Márgenes aplicados: ${marginTop}" superior, ${marginRight}" derecho, ${marginBottom}" inferior, ${marginLeft}" izquierdo`);
-        });
-        
-        // Rellenar con datos de ejemplo
-        document.getElementById('fillSample').addEventListener('click', function() {
-            const inputs = document.querySelectorAll('input[type="text"]');
+            // Botones
+            const btnRellenar = document.getElementById('btnRellenar');
+            const btnImprimir = document.getElementById('btnImprimir');
+            const btnLimpiar = document.getElementById('btnLimpiar');
             
-            const sampleData = [
-                "Ciudad de México",
-                "15",
-                "marzo",
-                "2023",
-                "Juan Pérez González",
-                "Av. Reforma #123, Col. Centro, CDMX",
-                "María García López",
-                "Calle Insurgentes #456, Col. Nápoles, CDMX",
-                "consultoría en desarrollo web y asesoría tecnológica",
-                "12",
-                "5,000.00",
-                "cinco mil pesos 00/100 M.N.",
-                "5",
-                "Carlos Mendoza Ruiz",
-                "MECR830101ABC",
-                "Ana Sánchez Rodríguez",
-                "ASAR751215XYZ"
-            ];
-            
-            inputs.forEach((input, index) => {
-                if (index < sampleData.length) {
-                    input.value = sampleData[index];
+            // Función para rellenar el contrato con datos de ejemplo
+            function rellenarEjemplo() {
+                // Datos de ejemplo
+                const datosEjemplo = {
+                    nombre: 'MARÍA FERNANDA LÓPEZ GARCÍA',
+                    fechaNacimiento: '15/08/1995',
+                    curp: 'LOGM950815MZSRRR09',
+                    direccion: 'Av. Hidalgo #123, Col. Centro, Guadalupe, Zac., CP 98600',
+                    correo: 'maria.lopez@email.com',
+                    rfc: 'LOGM950815ABC',
+                    salario: '350.00',
+                    beneficiario: 'JUAN CARLOS LÓPEZ SÁNCHEZ',
+                    parentesco: 'PADRE',
+                    fechaFirma: '25 de marzo de 2024'
+                };
+                
+                // Rellenar inputs del formulario
+                for (const key in datosEjemplo) {
+                    if (inputsFormulario[key]) {
+                        inputsFormulario[key].value = datosEjemplo[key];
+                    }
                 }
+                
+                // Rellenar contrato automáticamente
+                rellenarContrato();
+                
+                alert('Contrato rellenado con datos de ejemplo');
+            }
+            
+            // Función para rellenar el contrato con los datos del formulario
+            function rellenarContrato() {
+                // Actualizar elementos del contrato
+                elementosContrato.nombreTrabajador.textContent = inputsFormulario.nombre.value || '[NOMBRE COMPLETO]';
+                elementosContrato.fechaNacimiento.textContent = inputsFormulario.fechaNacimiento.value || '[FECHA NACIMIENTO]';
+                elementosContrato.curpTrabajador.textContent = inputsFormulario.curp.value || '[CURP]';
+                elementosContrato.direccionTrabajador.textContent = inputsFormulario.direccion.value || '[DIRECCIÓN]';
+                elementosContrato.correoTrabajador.textContent = inputsFormulario.correo.value || '[CORREO]';
+                elementosContrato.rfcTrabajador.textContent = inputsFormulario.rfc.value || '[RFC]';
+                elementosContrato.salarioTrabajador.textContent = inputsFormulario.salario.value || '[SALARIO]';
+                elementosContrato.beneficiario.textContent = inputsFormulario.beneficiario.value || '[BENEFICIARIO]';
+                elementosContrato.parentescoBenef.textContent = inputsFormulario.parentesco.value || '[PARENTESCO]';
+                elementosContrato.firmaNombreTrabajador.textContent = inputsFormulario.nombre.value || '[NOMBRE COMPLETO DEL TRABAJADOR]';
+                elementosContrato.testigoNombre.textContent = inputsFormulario.nombre.value || '[NOMBRE]';
+                
+                // Para la fecha de firma, descomponer si está en formato "DD de MES de AAAA"
+                const fechaFirma = inputsFormulario.fechaFirma.value;
+                if (fechaFirma) {
+                    const partes = fechaFirma.split(' de ');
+                    if (partes.length === 3) {
+                        elementosContrato.diaFirma.textContent = partes[0];
+                        elementosContrato.mesFirma.textContent = partes[1];
+                        elementosContrato.anoFirma.textContent = partes[2];
+                    } else {
+                        // Si no está en el formato esperado, usar fecha actual
+                        const hoy = new Date();
+                        elementosContrato.diaFirma.textContent = hoy.getDate();
+                        elementosContrato.mesFirma.textContent = obtenerNombreMes(hoy.getMonth());
+                        elementosContrato.anoFirma.textContent = hoy.getFullYear();
+                    }
+                } else {
+                    // Usar fecha actual si no se proporciona
+                    const hoy = new Date();
+                    elementosContrato.diaFirma.textContent = hoy.getDate();
+                    elementosContrato.mesFirma.textContent = obtenerNombreMes(hoy.getMonth());
+                    elementosContrato.anoFirma.textContent = hoy.getFullYear();
+                    
+                    // También actualizar el input de fecha de firma
+                    inputsFormulario.fechaFirma.value = `${hoy.getDate()} de ${obtenerNombreMes(hoy.getMonth())} de ${hoy.getFullYear()}`;
+                }
+                
+                // Para domicilio y teléfono del beneficiario, usar valores por defecto
+                elementosContrato.domicilioBenef.textContent = elementosContrato.direccionTrabajador.textContent;
+                elementosContrato.telefonoBenef.textContent = '[TELÉFONO]';
+            }
+            
+            // Función para obtener nombre del mes en español
+            function obtenerNombreMes(numeroMes) {
+                const meses = [
+                    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+                    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+                ];
+                return meses[numeroMes];
+            }
+            
+            // Función para limpiar el formulario y el contrato
+            function limpiarFormulario() {
+                // Limpiar inputs
+                for (const key in inputsFormulario) {
+                    if (inputsFormulario[key]) {
+                        inputsFormulario[key].value = '';
+                    }
+                }
+                
+                // Restaurar valores por defecto en el contrato
+                elementosContrato.nombreTrabajador.textContent = '[NOMBRE COMPLETO]';
+                elementosContrato.fechaNacimiento.textContent = '[FECHA NACIMIENTO]';
+                elementosContrato.curpTrabajador.textContent = '[CURP]';
+                elementosContrato.direccionTrabajador.textContent = '[DIRECCIÓN]';
+                elementosContrato.correoTrabajador.textContent = '[CORREO]';
+                elementosContrato.rfcTrabajador.textContent = '[RFC]';
+                elementosContrato.salarioTrabajador.textContent = '[SALARIO]';
+                elementosContrato.beneficiario.textContent = '[BENEFICIARIO]';
+                elementosContrato.parentescoBenef.textContent = '[PARENTESCO]';
+                elementosContrato.domicilioBenef.textContent = '[DOMICILIO]';
+                elementosContrato.telefonoBenef.textContent = '[TELÉFONO]';
+                elementosContrato.diaFirma.textContent = '[DÍA]';
+                elementosContrato.mesFirma.textContent = '[MES]';
+                elementosContrato.anoFirma.textContent = '[AÑO]';
+                elementosContrato.testigoNombre.textContent = '[NOMBRE]';
+                elementosContrato.firmaNombreTrabajador.textContent = '[NOMBRE COMPLETO DEL TRABAJADOR]';
+                
+                alert('Formulario limpiado. El contrato ha sido restablecido a sus valores originales.');
+            }
+            
+            // Event listeners
+            btnRellenar.addEventListener('click', rellenarContrato);
+            btnImprimir.addEventListener('click', function() {
+                window.print();
             });
+            btnLimpiar.addEventListener('click', limpiarFormulario);
             
-            alert("Formulario completado con datos de ejemplo");
-        });
-        
-        // Limpiar formulario
-        document.getElementById('clearForm').addEventListener('click', function() {
-            const inputs = document.querySelectorAll('input[type="text"]');
-            inputs.forEach(input => {
-                input.value = '';
-            });
+            // Rellenar automáticamente al cambiar cualquier input
+            for (const key in inputsFormulario) {
+                if (inputsFormulario[key]) {
+                    inputsFormulario[key].addEventListener('input', rellenarContrato);
+                }
+            }
             
-            // Restablecer márgenes
-            document.getElementById('marginTop').value = 1;
-            document.getElementById('marginRight').value = 1;
-            document.getElementById('marginBottom').value = 1;
-            document.getElementById('marginLeft').value = 1;
-            
-            const contractPage = document.getElementById('contractPage');
-            contractPage.style.padding = '1in';
-            
-            alert("Formulario limpiado y márgenes restablecidos");
-        });
-        
-        // Imprimir contrato
-        document.getElementById('printContract').addEventListener('click', function() {
-            window.print();
-        });
-        
-        // Validación de entradas de márgenes
-        const marginInputs = document.querySelectorAll('.margin-input');
-        marginInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                let value = parseFloat(this.value);
-                if (value < 0.5) this.value = 0.5;
-                if (value > 2) this.value = 2;
-            });
+            // Inicializar con datos de ejemplo
+            rellenarEjemplo();
         });
     </script>
 </body>
