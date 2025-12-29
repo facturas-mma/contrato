@@ -1,90 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formato de Contrato - Tamaño Carta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .description {
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        /* Contenedor principal de la página tipo carta */
+        .page-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        /* Tamaño carta estándar (8.5 x 11 pulgadas) */
+        .carta-page {
+            width: 8.5in;
+            height: 11in;
+            background-color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 1in; /* Margen de 1 pulgada en todos los lados */
+            overflow: auto;
+            margin-bottom: 20px;
+        }
+        
+        /* Estilos específicos para el contenido del contrato */
+        .contract-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+        
+        .contract-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .contract-subtitle {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        .contract-date {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .contract-body {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .contract-clause {
+            margin-bottom: 20px;
+        }
+        
+        .clause-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 17px;
+        }
+        
+        .signature-section {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #ccc;
+        }
+        
+        .signature-line {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .signature-box {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        
+        .signature-space {
+            height: 50px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        
+        /* Panel de controles */
+        .controls-panel {
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+        }
+        
+        .control-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-print {
+            background-color: #2ecc71;
+        }
+        
+        .btn-print:hover {
+            background-color: #27ae60;
+        }
+        
+        .margins-control {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .margin-input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+        }
+        
+        .margin-label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        /* Para impresión */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .controls-panel {
+                display: none;
+            }
+            
+            .carta-page {
+                box-shadow: none;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 1in;
+            }
+            
+            header, .description {
+                display: none;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .page-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .controls-panel {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .carta-page {
+                width: 100%;
+                max-width: 8.5in;
+                height: auto;
+                min-height: 11in;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .carta-page {
+                padding: 0.5in;
+            }
+            
+            .signature-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Formato de Contrato - Tamaño Carta</h1>
+            <p class="description">Este formulario tiene dimensiones de carta estándar (8.5" x 11") con márgenes de 1 pulgada. Puedes ajustar los márgenes y luego imprimir.</p>
+        </header>
+        
+        <div class="page-container">
+            <div class="carta-page" id="contractPage">
+                <div class="contract-header">
+                    <div class="contract-title">CONTRATO DE PRESTACIÓN DE SERVICIOS</div>
+                    <div class="contract-subtitle">Entre las partes que se mencionan a continuación</div>
+                    <div class="contract-date">Fecha: <span id="currentDate"></span></div>
+                </div>
+                
+                <div class="contract-body">
+                    <div class="contract-clause">
+                        <div class="clause-title">PRIMERA: LAS PARTES</div>
+                        <p>En la ciudad de <input type="text" placeholder="[Ciudad]" style="width: 200px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, a los <input type="text" placeholder="[Día]" style="width: 50px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> días del mes de <input type="text" placeholder="[Mes]" style="width: 100px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> del año <input type="text" placeholder="[Año]" style="width: 70px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, se reúnen por una parte el Sr./Sra. <input type="text" placeholder="[Nombre del Contratante]" style="width: 250px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, con domicilio en <input type="text" placeholder="[Domicilio]" style="width: 300px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, en adelante "EL CONTRATANTE"; y por la otra parte <input type="text" placeholder="[Nombre del Prestador]" style="width: 250px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, con domicilio en <input type="text" placeholder="[Domicilio]" style="width: 300px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, en adelante "EL PRESTADOR". Ambas partes se reconocen capacidad legal para obligarse y convienen en celebrar el presente contrato de prestación de servicios, sujetándose a las siguientes:</p>
+                    </div>
+                    
+                    <div class="contract-clause">
+                        <div class="clause-title">SEGUNDA: OBJETO DEL CONTRATO</div>
+                        <p>EL PRESTADOR se obliga a prestar a EL CONTRATANTE los servicios de <input type="text" placeholder="[Descripción de servicios]" style="width: 400px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">, de conformidad con los términos y condiciones establecidos en el presente instrumento.</p>
+                    </div>
+                    
+                    <div class="contract-clause">
+                        <div class="clause-title">TERCERA: DURACIÓN</div>
+                        <p>El presente contrato tendrá una vigencia de <input type="text" placeholder="[Número]" style="width: 60px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> meses, contados a partir de la fecha de firma, prorrogable automáticamente por periodos iguales salvo renuncia de alguna de las partes, comunicada por escrito con al menos 30 días de antelación a la fecha de terminación.</p>
+                    </div>
+                    
+                    <div class="contract-clause">
+                        <div class="clause-title">CUARTA: REMUNERACIÓN</div>
+                        <p>Como contraprestación por los servicios objeto del presente contrato, EL CONTRATANTE pagará a EL PRESTADOR la cantidad de $<input type="text" placeholder="[Monto]" style="width: 150px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> (<input type="text" placeholder="[Monto en letra]" style="width: 400px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;">) mensuales, pagaderos los días <input type="text" placeholder="[Día de pago]" style="width: 60px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"> de cada mes.</p>
+                    </div>
+                    
+                    <div class="contract-clause">
+                        <div class="clause-title">QUINTA: OBLIGACIONES DE LAS PARTES</div>
+                        <p>EL PRESTADOR se obliga a: (a) Ejecutar los servicios con la diligencia y cuidado debidos; (b) Cumplir con los plazos acordados; (c) Mantener la confidencialidad de la información a la que tenga acceso. EL CONTRATANTE se obliga a: (a) Proporcionar la información necesaria para la ejecución del servicio; (b) Efectuar los pagos en los plazos convenidos; (c) Brindar las facilidades necesarias para el adecuado cumplimiento del contrato.</p>
+                    </div>
+                    
+                    <div class="signature-section">
+                        <p>En señal de conformidad, las partes firman el presente contrato en dos ejemplares del mismo tenor y a un solo efecto, en la fecha y lugar antes indicados.</p>
+                        
+                        <div class="signature-line">
+                            <div class="signature-box">
+                                <div class="signature-space"></div>
+                                <div><strong>EL CONTRATANTE</strong></div>
+                                <div>Nombre: <input type="text" placeholder="[Nombre completo]" style="width: 200px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
+                                <div>RFC: <input type="text" placeholder="[RFC]" style="width: 150px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
+                            </div>
+                            
+                            <div class="signature-box">
+                                <div class="signature-space"></div>
+                                <div><strong>EL PRESTADOR</strong></div>
+                                <div>Nombre: <input type="text" placeholder="[Nombre completo]" style="width: 200px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
+                                <div>RFC: <input type="text" placeholder="[RFC]" style="width: 150px; border: none; border-bottom: 1px dotted #333; padding: 0 5px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls-panel">
+                <div class="control-group">
+                    <div class="control-title">Ajustar Márgenes (pulgadas)</div>
+                    <div class="margins-control">
+                        <div>
+                            <label class="margin-label">Margen Superior</label>
+                            <input type="number" id="marginTop" class="margin-input" value="1" step="0.1" min="0.5" max="2">
+                        </div>
+                        <div>
+                            <label class="margin-label">Margen Derecho</label>
+                            <input type="number" id="marginRight" class="margin-input" value="1" step="0.1" min="0.5" max="2">
+                        </div>
+                        <div>
+                            <label class="margin-label">Margen Inferior</label>
+                            <input type="number" id="marginBottom" class="margin-input" value="1" step="0.1" min="0.5" max="2">
+                        </div>
+                        <div>
+                            <label class="margin-label">Margen Izquierdo</label>
+                            <input type="number" id="marginLeft" class="margin-input" value="1" step="0.1" min="0.5" max="2">
+                        </div>
+                    </div>
+                    <button id="applyMargins" class="btn">Aplicar Márgenes</button>
+                </div>
+                
+                <div class="control-group">
+                    <div class="control-title">Opciones de Contrato</div>
+                    <button id="fillSample" class="btn">Rellenar con Datos de Ejemplo</button>
+                    <button id="clearForm" class="btn">Limpiar Formulario</button>
+                </div>
+                
+                <div class="control-group">
+                    <div class="control-title">Impresión</div>
+                    <button id="printContract" class="btn btn-print">Imprimir Contrato</button>
+                    <p style="font-size: 13px; margin-top: 10px; color: #7f8c8d;">Para mejor resultado, en opciones de impresión seleccione "Tamaño carta" y márgenes "Mínimos" o "Ninguno".</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>REMISIÓN</title>
-		<link rel="stylesheet" href="https://fredyortegon30.github.io/invoice/style.css">
-		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
-	</head>
-	<body>
-		<header>
-			<h1>REMISIÓN</h1>
-			<address>
-				<p>MI EMPRESA</p>
-				<p>NIT 1111111111<br>Calle 11- 10-33</p>
-				<p>Pereira</p>
-			</address>
-
-<div style="float: right;">
-    <img alt="" src="https://acortar.link/caSNRS" style="width: 100px; height: 100px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
-</div>
-
-
-		</header>
-		<article>
-			<h1>Recipient</h1>
-			<address>
-				<p>&lt;&lt;[id_cliente].[Nombre_cliente]&gt;&gt;<br>-</p>
-                <p class="small-text"><br>Email: &lt;&lt;[id_cliente].[Email]&gt;&gt;</p>
-                <p class="small-text">Cel:&lt;&lt;[id_cliente].[Celular]&gt;&gt;</p>
-			</address>
-			<table class="meta">
-				<tr>
-					<th><span>Remisión #</span></th>
-					<td><span>&lt;&lt;[N_factura]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Fecha</span></th>
-					<td><span>&lt;&lt;[Fecha]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-			<table class="inventory">
-				<thead>
-					<tr>
-						<th><span>Producto</span></th>
-						<th><span>Descripcion</span></th>
-						<th><span>Valor ud</span></th>
-						<th><span>Cantidad</span></th>
-						<th><span>Subtotal</span></th>
-					</tr>
-				</thead>
-				<tbody>
-				<p><span>&lt;&lt;Start: SELECT(DETALLE_VENTAS[id_detalle],[id_encabezado_venta]=[id_encabezado]) &gt;&gt;</span></p>
-					<tr>
-						<td><a class="cut">-</a>&lt;&lt;[id_producto].[Nombre de producto]&gt;&gt;</td>
-						<td><span></span></td>
-				        <td><span>&lt;&lt;[Valor_unitario]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Cantidad]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Subtotal]&gt;&gt;</span></td>
-					</tr>
-				<p><span>&lt;&lt; end &gt;&gt;</span></p>
-				</tbody>
-			</table>
-			<a class="add">+</a>
-			<table class="balance">
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Otros conceptos</span></th>
-					<td><span data-prefix="$"></span><span>0.00</span></td>
-				</tr>
-				<tr>
-					<th><span>Total a pagar</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-		</article>
-		<aside>
-			<h1><span>Notas adicionales</span></h1>
-			<div>
-				<p>Pagos a la cuenta de ahorros bancolombia # </p>
-			</div>
-		</aside>
-	</body>
+    <script>
+        // Establecer fecha actual
+        const currentDate = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('es-ES', options);
+        
+        // Aplicar márgenes personalizados
+        document.getElementById('applyMargins').addEventListener('click', function() {
+            const marginTop = document.getElementById('marginTop').value;
+            const marginRight = document.getElementById('marginRight').value;
+            const marginBottom = document.getElementById('marginBottom').value;
+            const marginLeft = document.getElementById('marginLeft').value;
+            
+            const contractPage = document.getElementById('contractPage');
+            contractPage.style.padding = `${marginTop}in ${marginRight}in ${marginBottom}in ${marginLeft}in`;
+            
+            // Mostrar confirmación
+            alert(`Márgenes aplicados: ${marginTop}" superior, ${marginRight}" derecho, ${marginBottom}" inferior, ${marginLeft}" izquierdo`);
+        });
+        
+        // Rellenar con datos de ejemplo
+        document.getElementById('fillSample').addEventListener('click', function() {
+            const inputs = document.querySelectorAll('input[type="text"]');
+            
+            const sampleData = [
+                "Ciudad de México",
+                "15",
+                "marzo",
+                "2023",
+                "Juan Pérez González",
+                "Av. Reforma #123, Col. Centro, CDMX",
+                "María García López",
+                "Calle Insurgentes #456, Col. Nápoles, CDMX",
+                "consultoría en desarrollo web y asesoría tecnológica",
+                "12",
+                "5,000.00",
+                "cinco mil pesos 00/100 M.N.",
+                "5",
+                "Carlos Mendoza Ruiz",
+                "MECR830101ABC",
+                "Ana Sánchez Rodríguez",
+                "ASAR751215XYZ"
+            ];
+            
+            inputs.forEach((input, index) => {
+                if (index < sampleData.length) {
+                    input.value = sampleData[index];
+                }
+            });
+            
+            alert("Formulario completado con datos de ejemplo");
+        });
+        
+        // Limpiar formulario
+        document.getElementById('clearForm').addEventListener('click', function() {
+            const inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+            
+            // Restablecer márgenes
+            document.getElementById('marginTop').value = 1;
+            document.getElementById('marginRight').value = 1;
+            document.getElementById('marginBottom').value = 1;
+            document.getElementById('marginLeft').value = 1;
+            
+            const contractPage = document.getElementById('contractPage');
+            contractPage.style.padding = '1in';
+            
+            alert("Formulario limpiado y márgenes restablecidos");
+        });
+        
+        // Imprimir contrato
+        document.getElementById('printContract').addEventListener('click', function() {
+            window.print();
+        });
+        
+        // Validación de entradas de márgenes
+        const marginInputs = document.querySelectorAll('.margin-input');
+        marginInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                let value = parseFloat(this.value);
+                if (value < 0.5) this.value = 0.5;
+                if (value > 2) this.value = 2;
+            });
+        });
+    </script>
+</body>
 </html>
