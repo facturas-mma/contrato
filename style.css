@@ -1,274 +1,595 @@
-/* reset */
+/* style.css - Estilos para Contrato Individual de Trabajo */
+/* Optimizado para AppSheet, Google Drive y generación de PDF */
+
+/* ===== RESET Y ESTILOS BASE ===== */
 * {
-    box-sizing: content-box;
-    color: inherit;
-    font: inherit;
-    line-height: inherit;
-    list-style: none;
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    vertical-align: top;
-}
-
-/* content editable */
-*[contenteditable] {
-    border-radius: 0.25em;
-    min-width: 1em;
-    outline: 0;
-    cursor: pointer;
-}
-
-*[contenteditable]:hover,
-*[contenteditable]:focus,
-td:hover *[contenteditable],
-td:focus *[contenteditable],
-img.hover {
-    background: #DEF;
-    box-shadow: 0 0 1em 0.5em #DEF;
-}
-
-span[contenteditable] {
-    display: inline-block;
-}
-
-/* heading */
-h1 {
-    font: bold 100% sans-serif;
-    letter-spacing: 0.5em;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 1em; /* Añadido para espacio después del título */
-}
-
-/* table */
-table {
-    font-size: 75%;
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse; /* Añadido para evitar problemas de bordes en algunas situaciones */
-}
-
-th, td {
-    border: 1px solid #000; /* Añadido un borde sólido para todas las celdas */
-    padding: 0.5em;
-    position: relative;
-    text-align: left;
-}
-
-th {
-    background: #EEE;
-}
-
-/* page */
-html {
-    font: 16px/1 'Open Sans', sans-serif;
-    overflow: auto;
-    padding: 0.5in;
-    background: #999;
-    cursor: default;
+    box-sizing: border-box;
 }
 
 body {
-    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.5;
+    color: #000000;
+    background-color: #ffffff;
+    font-size: 12pt;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+/* ===== CONTENEDOR TAMAÑO CARTA ===== */
+.carta-container {
+    width: 8.5in;
+    min-height: 11in;
+    max-width: 8.5in;
     margin: 0 auto;
-    padding: 0.5in;
-    background: #FFF;
-    box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
-}
-
-/* header */
-header {
-    margin: 0 0 3em;
-    overflow: hidden; /* Añadido para manejar el colapso del margen superior */
-}
-
-header h1 {
-    background: #27649d;
-    border-radius: 0.25em;
-    color: #FFF;
-    margin: 0;
-    padding: 0.5em 0;
-}
-
-header address {
-    float: left;
-    font-size: 75%;
-    font-style: normal;
-    line-height: 1.25;
-    margin: 0 1em 1em 0;
-}
-
-header span,
-header img {
-    display: block;
-    float: right;
-    margin: 0 0 1em 1em;
-    max-height: 25%;
-    max-width: 60%;
+    padding: 1in;
+    background-color: white;
     position: relative;
+    overflow: visible;
 }
 
-header img {
-    max-height: 100%;
-    max-width: 100%;
+/* ===== ENCABEZADO PROFESIONAL ===== */
+.header-profesional {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #1a3c5e;
+    page-break-after: avoid;
 }
 
-header input {
-    cursor: pointer;
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
+.header-profesional h1 {
+    font-size: 18pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1a3c5e;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.header-profesional h2 {
+    font-size: 14pt;
+    color: #2c3e50;
+    font-weight: normal;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.header-profesional .empresa {
+    font-size: 11pt;
+    color: #666666;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* ===== SECCIONES DEL CONTRATO ===== */
+.seccion-contrato {
+    margin-bottom: 25px;
+    page-break-inside: avoid;
+    page-break-before: auto;
+}
+
+.titulo-seccion {
+    font-size: 13pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1a3c5e;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #e0e0e0;
+    page-break-after: avoid;
+}
+
+.subtitulo-seccion {
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 15px 0 8px 0;
+    color: #2c3e50;
+    page-break-after: avoid;
+}
+
+.texto-contrato {
+    font-size: 11pt;
+    text-align: justify;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+}
+
+/* ===== ELEMENTOS NUMERADOS Y VIÑETAS ===== */
+.lista-numerada {
+    margin-left: 25px;
+    margin-bottom: 10px;
+    list-style-position: outside;
+}
+
+.lista-numerada li {
+    margin-bottom: 8px;
+    font-size: 11pt;
+    line-height: 1.6;
+    padding-left: 5px;
+}
+
+.lista-numerada li:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== CAMPOS DE ENTRADA Y VARIABLES ===== */
+.variable {
+    display: inline-block;
+    min-width: 150px;
+    border-bottom: 1px solid #000000;
+    text-align: center;
+    margin: 0 3px;
+    font-weight: bold;
+    color: #1a3c5e;
+    padding: 0 5px 2px 5px;
+    height: 18px;
+    vertical-align: bottom;
+}
+
+.campo-entrada {
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    padding: 2px 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    text-align: center;
+    background-color: transparent;
+    outline: none;
+    display: inline-block;
+}
+
+.campo-entrada:focus {
+    border-bottom: 2px solid #1a3c5e;
+}
+
+/* ===== SECCIÓN DE FIRMAS ===== */
+.seccion-firmas {
+    margin-top: 60px;
+    page-break-inside: avoid;
+    page-break-before: auto;
+}
+
+.firmas-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    flex-wrap: nowrap;
+}
+
+.firma {
+    width: 48%;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+.linea-firma {
+    border-bottom: 1px solid #000000;
+    height: 30px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
-/* article */
-article,
-article address,
-table.meta,
-table.inventory {
-    margin: 0 0 3em;
-    clear: both;
+.nombre-firma {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 11pt;
 }
 
-article:after {
-    content: "";
-    display: table;
-    clear: both;
+.cargo-firma {
+    font-size: 10pt;
+    color: #666666;
+    margin-bottom: 3px;
 }
 
-article h1 {
-    clip: rect(0 0 0 0);
+.testigo {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    page-break-inside: avoid;
+}
+
+/* ===== ELEMENTOS DE CONTROL (OCULTOS EN PDF) ===== */
+.panel-control {
+    width: 8.5in;
+    max-width: 8.5in;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+}
+
+.panel-titulo {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #1a3c5e;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.variables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.variable-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.variable-item label {
+    font-size: 10pt;
+    margin-bottom: 5px;
+    color: #555555;
+    font-weight: bold;
+}
+
+.variable-item input {
+    padding: 8px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font-size: 11pt;
+    font-family: Arial, sans-serif;
+}
+
+.variable-item input:focus {
+    border-color: #1a3c5e;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 60, 94, 0.1);
+}
+
+.botones-accion {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11pt;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    font-family: Arial, sans-serif;
+}
+
+.btn-primary {
+    background-color: #1a3c5e;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #15304d;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* ===== ELEMENTOS DE DISEÑO ===== */
+.numero-pagina {
     position: absolute;
+    bottom: 0.5in;
+    right: 1in;
+    font-size: 10pt;
+    color: #666666;
 }
 
-article address {
-    float: left;
-    font-size: 125%;
+.logo-empresa {
+    position: absolute;
+    top: 1in;
+    left: 1in;
+    font-size: 10pt;
+    color: #1a3c5e;
     font-weight: bold;
 }
 
-/* table meta & balance */
-table.meta,
-table.balance {
-    float: right;
-    width: 36%;
+/* ===== ESTILOS PARA IMPRESIÓN Y PDF ===== */
+@media print {
+    body {
+        background-color: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 12pt !important;
+    }
+    
+    .carta-container {
+        width: 8.5in !important;
+        height: 11in !important;
+        min-height: 11in !important;
+        padding: 1in !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        page-break-after: always;
+    }
+    
+    .panel-control {
+        display: none !important;
+    }
+    
+    .campo-entrada {
+        border-bottom: 1px solid #000000 !important;
+        background-color: transparent !important;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    
+    .variable {
+        border-bottom: 1px solid #000000 !important;
+    }
+    
+    /* Evitar que se rompan las secciones importantes */
+    .seccion-firmas {
+        page-break-inside: avoid !important;
+        page-break-before: avoid !important;
+    }
+    
+    .firmas-container {
+        page-break-inside: avoid !important;
+    }
+    
+    /* Asegurar que los encabezados no queden solos al final */
+    .titulo-seccion, .subtitulo-seccion {
+        page-break-after: avoid !important;
+    }
+    
+    /* Control de viudas y huérfanas */
+    p, li {
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Evitar saltos de página innecesarios */
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    /* Ajustes específicos para Google Drive/AppSheet */
+    @page {
+        size: letter;
+        margin: 1in;
+        marks: crop cross;
+    }
 }
 
-table.meta:after,
-table.balance:after {
-    content: "";
-    display: table;
-    clear: both;
+/* ===== RESPONSIVE PARA PANTALLAS ===== */
+@media screen and (max-width: 900px) {
+    body {
+        padding: 10px;
+        background-color: #f0f0f0;
+    }
+    
+    .carta-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        margin: 0 auto;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    
+    .panel-control {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .firmas-container {
+        flex-direction: column;
+    }
+    
+    .firma {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .variables-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* table meta */
-table.meta th {
-    width: 40%;
+/* ===== ESTILOS ESPECÍFICOS PARA APPSHEET ===== */
+/* Estos estilos ayudan a mantener la compatibilidad */
+.appsheet-compatible {
+    /* Asegurar que los inputs sean visibles en AppSheet */
+    input, select, textarea {
+        font-family: inherit;
+        font-size: inherit;
+        max-width: 100%;
+    }
+    
+    /* Mejorar la legibilidad en dispositivos móviles */
+    @media (max-width: 768px) {
+        .texto-contrato {
+            font-size: 12pt;
+            line-height: 1.7;
+        }
+        
+        .lista-numerada li {
+            font-size: 12pt;
+            margin-bottom: 10px;
+        }
+    }
 }
 
-table.meta td {
-    width: 60%;
-}
-
-/* table items */
-table.inventory th {
-    font-weight: bold;
+/* ===== CLASES UTILITARIAS ===== */
+.text-center {
     text-align: center;
 }
 
-table.inventory td {
+.text-right {
     text-align: right;
 }
 
-table { font-size: 75%; table-layout: fixed; width: 100%; }
-table { border-collapse: separate; border-spacing: 2px; }
-th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: left; }
-th, td { border-radius: 0.25em; border-style: solid; }
-th { background: #EEE; border-color: #BBB; }
-td { border-color: #DDD; }
-
-/* aside */
-aside h1 {
-    border: none;
-    border-width: 0 0 1px;
-    margin: 0 0 1em;
-    border-color: #999;
-    border-bottom-style: solid;
+.text-left {
+    text-align: left;
 }
 
-/* javascript */
-.add,
-.cut {
-    display: block;
-    float: left;
-    width: 0.6em;
-    font-size: .8rem;
-    padding: 0.25em 0.5em;
-    background: #9AF;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    background-image: -moz-linear-gradient(#00ADEE 5%, #0078A5 100%);
-    background-image: -webkit-linear-gradient(#00ADEE 5%, #0078A5 100%);
-    border-radius: 0.5em;
-    border-color: #0076A3;
-    color: #FFF;
-    cursor: pointer;
+.text-justify {
+    text-align: justify;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.bold {
     font-weight: bold;
-    text-shadow: 0 -1px 2px rgba(0,0,0,0.333);
-    margin: -2.5em 0 0;
 }
 
-.add:hover {
-    background: #00ADEE;
+.italic {
+    font-style: italic;
 }
 
-.cut {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: -1.5em;
+.underline {
+    text-decoration: underline;
 }
 
-tr:hover .cut {
-    opacity: 1;
+/* ===== ESTILOS PARA TABLAS (SI SE REQUIEREN) ===== */
+.tabla-contrato {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 11pt;
 }
 
-@media print {
-    * {
-        -webkit-print-color-adjust: exact;
+.tabla-contrato th {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+    color: #1a3c5e;
+}
+
+.tabla-contrato td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+}
+
+.tabla-contrato .total {
+    font-weight: bold;
+    background-color: #f8f9fa;
+    border-top: 2px solid #1a3c5e;
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none;
     }
-    html {
-        background: none;
-        padding: 0;
+}
+
+@media (prefers-contrast: high) {
+    .header-profesional h1,
+    .titulo-seccion,
+    .subtitulo-seccion {
+        color: #000000;
     }
-    body {
-        box-shadow: none;
-        margin: 0;
-    }
-    span:empty {
-        display: none;
-    }
-    .add,
-    .cut {
-        display: none;
+    
+    .variable {
+        color: #000000;
+        border-bottom: 2px solid #000000;
     }
 }
 
-@page {
-    margin: 0;
+/* ===== CORRECCIONES PARA PDF ===== */
+.pdf-optimized {
+    /* Asegurar que los bordes se impriman correctamente */
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    
+    /* Mejorar la calidad de impresión */
+    print-quality: high;
+    
+    /* Evitar problemas con fondos */
+    background-image: none !important;
 }
 
-/* Agrega un estilo personalizado para la línea debajo de la dirección y el número */
-.custom-line {
+/* Clase para elementos que no deben dividirse */
+.no-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* Clase para forzar nueva página */
+.new-page {
+    page-break-before: always;
+}
+
+/* ===== COMPATIBILIDAD CON GOOGLE DRIVE ===== */
+/* Estas reglas mejoran la compatibilidad con Google Drive Viewer */
+.gdrive-compatible img,
+.gdrive-compatible table {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Asegurar que los colores se mantengan en Google Drive */
+.gdrive-compatible {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+/* ===== ESTILOS PARA CAMPOS DE FECHA ===== */
+.campo-fecha {
+    width: 100px;
     border: none;
-    border-bottom: 1px solid #000;
-    margin: 5px 0;
+    border-bottom: 1px solid #000000;
+    text-align: center;
+    font-weight: bold;
+    padding: 0 5px 2px 5px;
+    display: inline-block;
 }
 
-/* Estilo para el texto más pequeño */
-.small-text {
-    font-size: 60%;
+.campo-fecha-mes {
+    width: 120px;
+}
+
+.campo-fecha-ano {
+    width: 80px;
 }
